@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Live Analyzer</title>
+  <link rel="stylesheet" href="popup-styles.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1>🔴 Live Analyzer</h1>
+      <p>Análise de comentários do YouTube em tempo real</p>
+    </header>
+    
+    <main class="popup-content">
+      <div class="status-section">
+        <div class="status-indicator" id="status-indicator">
+          <div class="status-dot"></div>
+          <span id="status-text">Verificando...</span>
+        </div>
+      </div>
+      
+      <div class="stats-section">
+        <div class="stat-card">
+          <div class="stat-number" id="total-comments">0</div>
+          <div class="stat-label">Comentários</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="total-topics">0</div>
+          <div class="stat-label">Tópicos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="analysis-time">0s</div>
+          <div class="stat-label">Tempo</div>
+        </div>
+      </div>
+      
+      <div class="controls-section">
+        <button id="toggle-widget" class="control-btn primary">
+          <span class="btn-text">Mostrar Widget</span>
+        </button>
+        <button id="clear-data" class="control-btn secondary">
+          <span class="btn-text">Limpar Dados</span>
+        </button>
+      </div>
+      
+      <div class="top-topics-section">
+        <h3>Top 5 Tópicos Atuais</h3>
+        <div id="top-topics-list" class="topics-list">
+          <div class="no-topics">Nenhum tópico ainda...</div>
+        </div>
+      </div>
+    </main>
+    
+    <footer class="popup-footer">
+      <div class="footer-info">
+        <span>v1.0</span>
+        <span>•</span>
+        <span>Feito para análise de lives</span>
+      </div>
+    </footer>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
