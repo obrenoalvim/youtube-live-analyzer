@@ -7,6 +7,7 @@ class YouTubeLiveAnalyzer {
     this.updateInterval = null;
     this.isAnalyzing = false;
     this.startTime = Date.now();
+    this.hiddenByUser = false;
     
     const baseStopWords = [
       'a', 'e', 'o', 'de', 'do', 'da', 'em', 'um', 'uma', 'com', 'não', 'nao', 'para', 'por', 'se', 'no', 'na', 'mais', 'que', 'como', 'mas', 'foi', 'ao', 'ele', 'das', 'tem', 'à', 'seu', 'sua', 'ou', 'ser', 'quando', 'muito', 'há', 'nos', 'já', 'está', 'eu', 'também', 'só', 'pelo', 'pela', 'até', 'isso', 'ela', 'entre', 'era', 'depois', 'sem', 'mesmo', 'aos', 'ter', 'seus', 'suas', 'numa', 'pelos', 'pelas', 'esse', 'esses', 'essa', 'essas', 'meu', 'minha', 'meus', 'minhas', 'teu', 'tua', 'teus', 'tuas', 'nosso', 'nossa', 'nossos', 'nossas', 'dele', 'dela', 'deles', 'delas', 'este', 'esta', 'estes', 'estas', 'esse', 'essa', 'esses', 'essas', 'aquele', 'aquela', 'aqueles', 'aquelas', 'vai', 'vou', 'vc', 'você', 'voce', 'kkkk', 'rsrs', 'haha', 'kkkkk', 'pra',
@@ -51,8 +52,18 @@ class YouTubeLiveAnalyzer {
   
   init() {
     console.log('🚀 YouTube Live Analyzer iniciando...');
-    this.checkIfLive();
-    this.createAnalyzerUI();
+
+    try {
+      chrome.storage?.local.get({ liveAnalyzerHidden: false }, (res) => {
+        this.hiddenByUser = Boolean(res?.liveAnalyzerHidden);
+        this.createAnalyzerUI();
+        this.checkIfLive();
+      });
+    } catch (e) {
+      this.hiddenByUser = false;
+      this.createAnalyzerUI();
+      this.checkIfLive();
+    }
     
     let currentUrl = window.location.href;
     const urlObserver = new MutationObserver(() => {
@@ -98,11 +109,11 @@ class YouTubeLiveAnalyzer {
       setTimeout(() => {
         const liveIndicators = [
           document.querySelector('.ytp-live-badge, .ytp-live'),
-          document.querySelector('[aria-label*="AO VIVO"], [aria-label*="LIVE"], [title*="AO VIVO"], [title*="LIVE"]'),
+          document.querySelector('[aria-label*="AO VIVO"], [aria-label*="Live" i], [title*="AO VIVO"], [title*="Live" i]'),
           document.querySelector('#chatframe, yt-live-chat-app, #chat'),
           document.querySelector('yt-live-chat-renderer'),
           ...Array.from(document.querySelectorAll('*')).filter(el => 
-            el.textContent && (el.textContent.includes('AO VIVO') || el.textContent.includes('LIVE'))
+            el.textContent && (/\bAO VIVO\b|\bLIVE\b/i).test(el.textContent)
           )
         ];
         
@@ -135,9 +146,14 @@ class YouTubeLiveAnalyzer {
     const widget = document.createElement('div');
     widget.id = 'live-analyzer-widget';
     widget.innerHTML = `
-      <div class="analyzer-header">
-        <h3>🔴 Live Analyzer</h3>
-        <button id="toggle-analyzer">●</button>
+      <div class="analyzer-header" style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <h3 style="margin:0;font-size:14px">🔴 Live Analyzer</h3>
+        <div class="controls" style="display:flex;align-items:center;gap:10px">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;user-select:none;cursor:pointer">
+            <input type="checkbox" id="toggle-visibility" /> Mostrar popup
+          </label>
+          <button id="toggle-analyzer" title="Minimizar/Expandir">●</button>
+        </div>
       </div>
       <div class="analyzer-content">
         <div class="status">Aguardando live...</div>
@@ -159,21 +175,53 @@ class YouTubeLiveAnalyzer {
     `;
     
     document.body.appendChild(widget);
-    
-    const toggleBtn = document.getElementById('toggle-analyzer');
+
+    const styleId = 'live-analyzer-inline-style';
+
+    const toggleBtn = widget.querySelector('#toggle-analyzer');
     const content = widget.querySelector('.analyzer-content');
-    
     toggleBtn.addEventListener('click', () => {
       const isVisible = content.style.display !== 'none';
       content.style.display = isVisible ? 'none' : 'block';
       toggleBtn.textContent = isVisible ? '○' : '●';
     });
+
+    const visibilityCheckbox = widget.querySelector('#toggle-visibility');
+    visibilityCheckbox.checked = !this.hiddenByUser; // checked = mostrar popup
+    visibilityCheckbox.addEventListener('change', (e) => {
+      const shouldShow = e.target.checked;
+      this.hiddenByUser = !shouldShow;
+      try {
+        chrome.storage?.local.set({ liveAnalyzerHidden: this.hiddenByUser });
+      } catch {}
+      this.applyWidgetVisibility();
+    });
+
+    this.applyWidgetVisibility();
+  }
+
+  applyWidgetVisibility() {
+    const widget = document.getElementById('live-analyzer-widget');
+    if (!widget) return;
+
+    const shouldBeVisible = this.isLive && !this.hiddenByUser;
+    widget.style.display = shouldBeVisible ? 'block' : 'none';
+
+    const visibilityCheckbox = widget.querySelector('#toggle-visibility');
+    if (visibilityCheckbox) {
+      visibilityCheckbox.checked = !this.hiddenByUser;
+    }
   }
   
   toggleWidget() {
     const widget = document.getElementById('live-analyzer-widget');
     if (widget) {
-      widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
+      const next = widget.style.display === 'none' ? 'block' : 'none';
+      widget.style.display = next;
+      this.hiddenByUser = next === 'none';
+      try {
+        chrome.storage?.local.set({ liveAnalyzerHidden: this.hiddenByUser });
+      } catch {}
     }
   }
   
@@ -186,6 +234,8 @@ class YouTubeLiveAnalyzer {
   updateAnalyzerUI() {
     const widget = document.getElementById('live-analyzer-widget');
     if (!widget) return;
+    
+    this.applyWidgetVisibility();
     
     const status = widget.querySelector('.status');
     const commentCount = widget.querySelector('#comment-count');
