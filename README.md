@@ -1,6 +1,6 @@
 # YouTube Live Comment Analyzer - Extensão Chrome
 
-[![CI](https://github.com/obrenoalvim/liveAnalyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/obrenoalvim/liveAnalyzer/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/obrenoalvim/youtube-live-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/obrenoalvim/youtube-live-analyzer/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Uma extensão poderosa para Chrome que monitora lives do YouTube em tempo real e cria um ranking dos assuntos mais discutidos nos comentários.
 
