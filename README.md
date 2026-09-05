@@ -1,177 +1,179 @@
-# YouTube Live Comment Analyzer - Extensão Chrome
+English | [Português](README.pt.md)
+
+# YouTube Live Comment Analyzer - Chrome Extension
 
 [![CI](https://github.com/obrenoalvim/youtube-live-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/obrenoalvim/youtube-live-analyzer/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Uma extensão poderosa para Chrome que monitora lives do YouTube em tempo real e cria um ranking dos assuntos mais discutidos nos comentários.
+A Chrome extension that monitors YouTube live streams in real time and builds a live ranking of the topics people are talking about most in the chat.
 
-## 🚀 Funcionalidades
+## 🚀 Features
 
-### Core Features:
-- **Detecção Automática de Lives**: A extensão detecta automaticamente quando você está assistindo uma live no YouTube
-- **Análise em Tempo Real**: Monitora e analisa todos os comentários que aparecem durante a transmissão
-- **Ranking Dinâmico**: Cria um ranking ao vivo dos top 10 assuntos mais mencionados
-- **Interface Flutuante**: Widget discreto que fica fixo na tela durante a análise
-- **Estatísticas Detalhadas**: Mostra número de comentários analisados e tópicos identificados
-- **Multi-linguagem**: Suporta análise em português e inglês
-- **Controles Intuitivos**: Popup com controles para gerenciar a extensão
+### Core features:
+- **Automatic live detection**: the extension automatically detects when you're watching a YouTube live stream
+- **Real-time analysis**: monitors and analyzes every comment that appears during the stream
+- **Dynamic ranking**: builds a live top-10 ranking of the most-mentioned topics
+- **Floating interface**: a discreet widget stays fixed on screen during analysis
+- **Detailed stats**: shows the number of comments analyzed and topics identified
+- **Multi-language**: supports analysis in Portuguese and English
+- **Intuitive controls**: popup with controls to manage the extension
 
-### Design Elements:
-- **Interface Moderna**: Design gradiente com cores vibrantes e elementos glassmorphism
-- **Widget Responsivo**: Interface adaptativa que funciona em diferentes tamanhos de tela  
-- **Animações Suaves**: Transições e micro-interações que tornam a experiência mais agradável
-- **Feedback Visual**: Indicadores de status em tempo real com cores e animações
-- **Tipografia Clara**: Fontes legíveis com hierarquia visual bem definida
-- **Tema Escuro**: Interface otimizada para não cansar a vista durante longas sessões
+### Design elements:
+- **Modern interface**: gradient design with vibrant colors and glassmorphism elements
+- **Responsive widget**: adaptive interface that works across different screen sizes
+- **Smooth animations**: transitions and micro-interactions for a more pleasant experience
+- **Visual feedback**: real-time status indicators with colors and animations
+- **Clear typography**: readable fonts with a well-defined visual hierarchy
+- **Dark theme**: interface optimized for long sessions without eye strain
 
-## 📦 Instalação
+## 📦 Installation
 
-### Via Chrome Web Store (em breve)
-A extensão estará disponível na Chrome Web Store em breve.
+### Via the Chrome Web Store (coming soon)
+The extension will be available on the Chrome Web Store soon.
 
-### Instalação Manual para Desenvolvimento
+### Manual installation for development
 
-1. **Clone ou baixe** os arquivos da extensão
-2. **Abra o Chrome** e vá para `chrome://extensions/`
-3. **Ative o "Modo do desenvolvedor"** no canto superior direito
-4. **Clique em "Carregar sem compactação"**
-5. **Selecione a pasta** contendo os arquivos da extensão
-6. A extensão será instalada e aparecerá na barra de ferramentas
+1. **Clone or download** the extension files
+2. **Open Chrome** and go to `chrome://extensions/`
+3. **Enable "Developer mode"** in the top-right corner
+4. **Click "Load unpacked"**
+5. **Select the folder** containing the extension files
+6. The extension installs and shows up in the toolbar
 
-## 🔧 Como Usar
+## 🔧 How to use
 
-### Passo a Passo:
+### Step by step:
 
-1. **Acesse uma live do YouTube**: Vá para qualquer transmissão ao vivo no YouTube
-2. **Ativação Automática**: A extensão detectará automaticamente que é uma live
-3. **Widget Aparece**: Um widget discreto aparecerá no canto superior direito da tela
-4. **Análise Inicia**: Os comentários começarão a ser analisados automaticamente
-5. **Veja o Ranking**: O top 10 dos assuntos mais discutidos será atualizado em tempo real
+1. **Open a YouTube live stream**: go to any live broadcast on YouTube
+2. **Automatic activation**: the extension detects it's a live stream automatically
+3. **Widget appears**: a discreet widget shows up in the top-right corner
+4. **Analysis starts**: comments start being analyzed automatically
+5. **See the ranking**: the top 10 most-discussed topics updates in real time
 
-### Controles Disponíveis:
+### Available controls:
 
-- **Botão ●/○**: Minimiza/maximiza o widget
-- **Popup da Extensão**: Clique no ícone da extensão para ver estatísticas detalhadas
-- **"Limpar Dados"**: Reset todas as estatísticas da sessão atual
-- **"Mostrar Widget"**: Alterna a visibilidade do widget na página
+- **●/○ button**: minimize/maximize the widget
+- **Extension popup**: click the extension icon to see detailed stats
+- **"Clear Data"**: resets all stats for the current session
+- **"Show Widget"**: toggles the widget's visibility on the page
 
-## 🧠 Como Funciona a Análise
+## 🧠 How the analysis works
 
-### Processo de Análise:
-1. **Captura de Comentários**: A extensão monitora o chat da live em tempo real
-2. **Normalização de Texto**: Remove caracteres especiais e normaliza o texto
-3. **Filtro de Stop Words**: Remove palavras comuns que não agregam significado
-4. **Extração de Tópicos**: Identifica palavras, frases e hashtags relevantes
-5. **Contagem e Ranking**: Conta as ocorrências e ordena por popularidade
-6. **Atualização Contínua**: O ranking é atualizado a cada segundo
+### Analysis pipeline:
+1. **Comment capture**: the extension monitors the live chat in real time
+2. **Text normalization**: strips special characters and normalizes the text
+3. **Stop-word filtering**: removes common words that don't add meaning
+4. **Topic extraction**: identifies relevant words, phrases and hashtags
+5. **Counting and ranking**: counts occurrences and sorts by popularity
+6. **Continuous update**: the ranking refreshes every second
 
-### Tipos de Análise:
-- **Palavras-chave**: Termos individuais mais mencionados
-- **Bigramas**: Frases de duas palavras
-- **Trigramas**: Frases de três palavras  
-- **Hashtags**: Tags identificadas com #
-- **Menções**: Usuários mencionados com @
+### Analysis types:
+- **Keywords**: most-mentioned individual terms
+- **Bigrams**: two-word phrases
+- **Trigrams**: three-word phrases
+- **Hashtags**: tags identified with #
+- **Mentions**: users mentioned with @
 
-## 🛠️ Estrutura Técnica
+## 🛠️ Technical structure
 
-### Arquivos Principais:
-- `manifest.json` - Configuração da extensão
-- `content-script.js` - Script que roda nas páginas do YouTube
-- `popup.html/js` - Interface popup da extensão
-- `background.js` - Service worker para tarefas em background
-- `styles.css` - Estilos do widget flutuante
+### Main files:
+- `manifest.json` - extension configuration
+- `content-script.js` - script that runs on YouTube pages
+- `popup.html/js` - extension popup interface
+- `background.js` - service worker for background tasks
+- `styles.css` - floating widget styles
 
-### Tecnologias Utilizadas:
-- **Manifest V3** - Última versão das extensões Chrome
-- **Vanilla JavaScript** - Sem dependências externas
-- **CSS3** - Design moderno com gradientes e animações
-- **Chrome Extensions API** - Integração nativa com o browser
-- **Mutation Observer** - Detecção de novos comentários em tempo real
+### Technologies used:
+- **Manifest V3** - latest Chrome extensions version
+- **Vanilla JavaScript** - no external dependencies
+- **CSS3** - modern design with gradients and animations
+- **Chrome Extensions API** - native browser integration
+- **Mutation Observer** - real-time detection of new comments
 
-## 🎯 Casos de Uso
+## 🎯 Use cases
 
-### Para Criadores de Conteúdo:
-- **Monitorar Engajamento**: Veja quais assuntos mais interessam sua audiência
-- **Adaptar Conteúdo**: Mude o foco da live baseado nos tópicos em alta
-- **Identificar Tendências**: Descubra novos temas para futuro conteúdo
+### For content creators:
+- **Monitor engagement**: see which topics interest your audience the most
+- **Adapt content**: shift the stream's focus based on trending topics
+- **Spot trends**: discover new themes for future content
 
-### Para Espectadores:
-- **Visão Geral**: Entenda rapidamente sobre o que a live está tratando
-- **Participação**: Saiba quais assuntos estão sendo mais discutidos
-- **Navegação**: Identifique se a live te interessa pelos tópicos principais
+### For viewers:
+- **Quick overview**: instantly understand what a live stream is about
+- **Participation**: know which topics are being discussed most
+- **Navigation**: gauge interest in a stream by its main topics
 
-### Para Pesquisadores:
-- **Análise de Sentimento**: Estude reações da audiência em tempo real
-- **Tendências Sociais**: Identifique tópicos emergentes na comunidade
-- **Comportamento Online**: Analise padrões de discussão em lives
+### For researchers:
+- **Sentiment analysis**: study audience reactions in real time
+- **Social trends**: identify emerging topics within a community
+- **Online behavior**: analyze discussion patterns in live streams
 
-## 🔒 Privacidade e Segurança
+## 🔒 Privacy and security
 
-### Dados Locais:
-- **Nenhum servidor externo**: Toda análise é feita localmente no seu browser
-- **Sem coleta de dados**: Não coletamos nem armazenamos informações pessoais
-- **Sem tracking**: Não rastreamos sua atividade ou dados de navegação
+### Local data:
+- **No external server**: all analysis happens locally in your browser
+- **No data collection**: we don't collect or store personal information
+- **No tracking**: we don't track your activity or browsing data
 
-### Permissões Mínimas:
-- **activeTab**: Apenas para acessar a aba ativa quando necessário
-- **storage**: Para salvar configurações locais da extensão
+### Minimal permissions:
+- **activeTab**: only to access the active tab when needed
+- **storage**: to save the extension's local settings
 
-## 🐛 Resolução de Problemas
+## 🐛 Troubleshooting
 
-### Problemas Comuns:
+### Common issues:
 
-**A extensão não detecta a live:**
-- Aguarde alguns segundos após entrar na live
-- Verifique se realmente é uma transmissão ao vivo (não um vídeo)
-- Recarregue a página se necessário
+**The extension doesn't detect the live stream:**
+- Wait a few seconds after joining the live stream
+- Confirm it's actually a live broadcast (not a regular video)
+- Reload the page if needed
 
-**Widget não aparece:**
-- Clique no ícone da extensão e em "Mostrar Widget"
-- Verifique se a extensão está ativa em `chrome://extensions/`
+**Widget doesn't appear:**
+- Click the extension icon and then "Show Widget"
+- Check that the extension is enabled at `chrome://extensions/`
 
-**Comentários não são analisados:**
-- Algumas lives podem ter chat desabilitado
-- Verifique se você consegue ver os comentários normalmente
-- Recarregue a página e tente novamente
+**Comments aren't being analyzed:**
+- Some live streams may have chat disabled
+- Check that you can see the comments normally
+- Reload the page and try again
 
 ### Debug:
-Para desenvolvedores, abra o DevTools (F12) e verifique o console para logs da extensão.
+For developers, open DevTools (F12) and check the console for the extension's logs.
 
-## 🚀 Próximas Funcionalidades
+## 🚀 Upcoming features
 
-### Em Desenvolvimento:
-- **Exportar Dados**: Salvar relatórios da análise em JSON/CSV
-- **Filtros Avançados**: Filtrar por tipos de comentários ou usuários
-- **Análise de Sentimento**: Identificar comentários positivos/negativos
-- **Histórico de Sessions**: Salvar análises de lives anteriores
-- **Notificações**: Alertas quando novos tópicos emergem
+### In development:
+- **Data export**: save analysis reports as JSON/CSV
+- **Advanced filters**: filter by comment type or user
+- **Sentiment analysis**: identify positive/negative comments
+- **Session history**: save analyses from previous live streams
+- **Notifications**: alerts when new topics emerge
 
-### Futuras Melhorias:
-- **Suporte a mais idiomas**: Expandir análise para outras linguagens
-- **Machine Learning**: IA para melhor categorização de tópicos
-- **Integração com APIs**: Conectar com serviços de análise externa
-- **Tema Claro**: Opção de interface clara além da escura
+### Future improvements:
+- **More language support**: expand analysis to other languages
+- **Machine learning**: better topic categorization via AI
+- **API integrations**: connect with external analysis services
+- **Light theme**: a light interface option alongside the dark one
 
-## 📄 Licença
+## 📄 License
 
-Esta extensão é distribuída sob licença MIT. Veja o arquivo LICENSE para mais detalhes.
+This extension is distributed under the MIT license. See the LICENSE file for details.
 
-## 🤝 Contribuições
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Sinta-se à vontade para:
-- Reportar bugs
-- Sugerir novas funcionalidades  
-- Contribuir com código
-- Melhorar a documentação
+Contributions are welcome! Feel free to:
+- Report bugs
+- Suggest new features
+- Contribute code
+- Improve the documentation
 
-## 📞 Suporte
+## 📞 Support
 
-Se encontrar algum problema ou tiver sugestões:
-1. Abra uma issue no repositório do projeto
-2. Descreva detalhadamente o problema encontrado
-3. Inclua informações sobre seu sistema e versão do Chrome
+If you run into a problem or have suggestions:
+1. Open an issue in the project's repository
+2. Describe the problem in detail
+3. Include your system and Chrome version
 
 ---
 
-**Desenvolvido para a comunidade do YouTube**
+**Built for the YouTube community**
 
-*Esta extensão não é afiliada ou endossada pelo YouTube ou Google.*
+*This extension is not affiliated with or endorsed by YouTube or Google.*
