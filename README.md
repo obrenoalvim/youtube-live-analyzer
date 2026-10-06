@@ -1,8 +1,25 @@
-English | [Português](README.pt.md)
+<div align="center">
 
-# YouTube Live Comment Analyzer - Chrome Extension
+<img src=".github/logo.svg" alt="YouTube Live Comment Analyzer logo" width="120" height="120">
 
-[![CI](https://github.com/obrenoalvim/youtube-live-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/obrenoalvim/youtube-live-analyzer/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+# YouTube Live Comment Analyzer
+
+**A Chrome extension that ranks what a YouTube live chat is talking about, in real time.**<br>
+A floating widget shows the top 10 topics, keywords, bigrams, trigrams, hashtags and mentions. Everything runs locally in your browser.
+
+[![CI](https://github.com/obrenoalvim/youtube-live-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/obrenoalvim/youtube-live-analyzer/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/obrenoalvim/youtube-live-analyzer?style=flat&logo=github&color=7c9cff)](https://github.com/obrenoalvim/youtube-live-analyzer/stargazers)
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-4285F4?logo=googlechrome&logoColor=white)](manifest.json)
+[![No dependencies](https://img.shields.io/badge/Vanilla-JavaScript-F7DF1E?logo=javascript&logoColor=black)](#-technical-structure)
+
+**English** · [Português](README.pt.md)
+
+[Features](#-features) · [Installation](#-installation) · [How to use](#-how-to-use) · [Privacy](#-privacy-and-security) · [FAQ](#faq)
+
+</div>
+
+---
 
 A Chrome extension that monitors YouTube live streams in real time and builds a live ranking of the topics people are talking about most in the chat.
 
@@ -174,6 +191,36 @@ If you run into a problem or have suggestions:
 
 ---
 
+## FAQ
+
+**Does it send chat data to a server?**
+No. All analysis happens locally in your browser. The extension only asks for the `activeTab` and `storage` permissions.
+
+**Does it work on regular videos?**
+No. It activates on live streams and analyzes the live chat.
+
+**Which languages does it analyze?**
+Portuguese and English.
+
+**Is it on the Chrome Web Store?**
+Not yet. Load it as an unpacked extension, as shown under [Installation](#-installation).
+
+## More developer tools by the same author
+
+- [**media-harvest**](https://github.com/obrenoalvim/media-harvest): a DevTools panel that captures every image and video a page loads.
+- [**linkedin-insights**](https://github.com/obrenoalvim/linkedin-insights): turn your LinkedIn analytics export into a dashboard.
+- [**echoport**](https://github.com/obrenoalvim/echoport): a real-time localhost port scanner for developers.
+
+---
+
 **Built for the YouTube community**
 
 *This extension is not affiliated with or endorsed by YouTube or Google.*
+
+<div align="center">
+
+If the ranking told you what the chat cares about, a ⭐ helps other people find it.
+
+<sub>**Topics:** youtube-live · live-analysis · chrome-extension · manifest-v3 · text-analysis · real-time · nlp · vanilla-js · extension</sub>
+
+</div>
